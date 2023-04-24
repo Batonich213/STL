@@ -1,10 +1,12 @@
 #include<iostream>
 #include<array>
+#include<vector>
 using namespace std;
 
 
 #define tab "\t"
-#define STL_ARRAY
+//#define STL_ARRAY
+#define STL_VECTOR
 
 
 void main()
@@ -16,5 +18,12 @@ void main()
 	{
 		cout << arr[i] << tab;
 	}
+#endif
+
+
+#ifdef STL_VECTOR
+
+
+
 #endif
 }
