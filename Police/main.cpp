@@ -84,7 +84,9 @@ std::ostream& operator<<(std::ostream& os, const Crime& obj)
 	os << obj.get_place() << " ";
 	os << obj.get_time() << " ";
 	return os;*/
-	return os << crime.at(obj.get_id()) << ", " << obj.get_place() << obj.get_time();
+	std::string time = obj.get_time();
+	time[time.size() - 1] = 0;
+	return os<< time << " " << crime.at(obj.get_id()) << ", " << obj.get_place();
 }
 
 
@@ -93,14 +95,14 @@ std::ostream& operator<<(std::ostream& os, const Crime& obj)
 void main()
 {
 #ifdef CRIME_CHEACK
-	Crime crime(10, "Lenin street ", 23, 22, 1, 5, 2023);
-	cout << crime << endl;
+	/*Crime crime(10, "Lenin street ", 23, 22, 1, 5, 2023);
+	cout << crime << endl;*/
 #endif
 	std::map<std::string, std::list<Crime>> base =
 	{
-		{"m777aa", {Crime(1,"Lenin Street 2", 22, 11, 29, 4, 2023), Crime(2, "Lenin Street", 23, 11, 29, 4, 2023), Crime(4, "Lenin Street", 24, 11, 29, 4, 2023) }},
-		{"m001aa", {Crime(1,"Pushkin Street", 30, 18, 30, 4, 2023)}},
-		{"b123cc", {Crime(8,"October Street", 10, 8, 8, 03, 2022),Crime(3,"October Street", 22, 18, 11, 04, 2022)}}
+		{"m777aa", {Crime(1,"Lenin Street 2 ", 22, 11, 29, 4, 2023), Crime(2, "Lenin Street ", 23, 11, 29, 4, 2023), Crime(4, "Lenin Street ", 24, 11, 29, 4, 2023) }},
+		{"m001aa", {Crime(1,"Pushkin Street ", 30, 18, 30, 4, 2023)}},
+		{"b123cc", {Crime(8,"October Street ", 10, 8, 8, 03, 2022),Crime(3,"October Street ", 22, 18, 11, 04, 2022)}}
 
 	};
 	for (std::map<std::string,std::list<Crime>>::iterator it = base.begin(); it != base.end(); ++it)
@@ -111,6 +113,6 @@ void main()
 		{
 			cout << "\t" << *c_it << endl;
 		}
-		cout << "\n-------------------------------\n" << endl;
+		cout << "\n------------------------------------------------------------------------------\n" << endl;
 	}
 }
